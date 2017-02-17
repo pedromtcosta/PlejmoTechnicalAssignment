@@ -4,19 +4,88 @@
     <title></title>
 	<meta charset="utf-8" />
     <link href="bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="css/site.css" rel="stylesheet" />
 </head>
 <body>
 
+    <div class="container">
 
+        <div class="text-center">
+            <h2>Actionfilmer</h2>
+            <p class="genre-description">
+                Hjärt i halsgropen, pulsen, ökar, adrenalinet rinner till. Kanske skriker du till lite grand. Snabba bilar, fighting, goda hjätar som
+                besegrar det onda, späckat med specialeffekter, läskig action eller rolig action, Actiongenren bjuder pä det mesta. Här hittar du de filmer pä Plejmo
+                som har huvudgenre Action. Vare sig du behöver lite pepp, eller inse att det finns de som faktiskt är snabbare, smartare och starkare än
+                du sä bör självklart streama en actionfilm nu.
+            </p>
+        </div>
 
+        <h2 class="genre-title">Populärst Action</h2>
 
-    <script src="js/knockout.js"></script>
+        <div data-bind="foreach: movies" class="movies">
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 transition-width">
+                <div class="movie">
+                    <img class="movie-img" data-bind="attr:{src: img}" />
+
+                    <div class="price">Kolla nu 39 kr</div>
+
+                    <div class="movie-info">
+                        <div>
+                            <span class="movie-title" data-bind="text: title"></span>
+                            <a href="#">
+                                <span class="three-dots"></span>
+                            </a>
+                        </div>
+                        <span class="movie-genre" data-bind="text: genre"></span>
+                        <div>
+                            <div class="rating">
+                                <span class="rating-filled" data-bind="style: { width: function(){ return rating + '%'; }() }"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="genre-title">All Action</h2>
+
+        <div data-bind="foreach: movies">
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 transition-width">
+                <div class="movie">
+                    <img class="movie-img" data-bind="attr:{src: img}" />
+
+                    <div class="price">Kolla nu 39 kr</div>
+
+                    <div class="movie-info">
+                        <div>
+                            <span class="movie-title" data-bind="text: title"></span>
+                            <a href="#">
+                                <span class="three-dots"></span>
+                            </a>
+                        </div>
+                        <span class="movie-genre" data-bind="text: genre"></span>
+                        <div>
+                            <div class="rating">
+                                <span class="rating-filled" data-bind="style: { width: function(){ return rating + '%'; }() }"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="js/jquery-3.1.1.js"></script>
+    <script src="js/knockout.js"></script>
+    <script src="js/view-models/MoviesListViewModel.js"></script>
     <script>
 
         $(function () {
 
-            
+            var vm = new MoviesListViewModel();
+            vm.loadMovies();
+
+            ko.applyBindings(vm);
 
         });
 

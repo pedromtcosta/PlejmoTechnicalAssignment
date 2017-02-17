@@ -19,7 +19,7 @@ $(function () {
             options.success([{}, {}, {}]);
         };
 
-        vm.doSomething();
+        vm.loadMovies();
         equal(vm.movies().length, 3);
     });
 
